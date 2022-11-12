@@ -34,7 +34,7 @@ def allowed_file(filename):
 @app.route('/git_update', methods=['POST'])
 def git_update():
     repo = git.Repo("./FaceRecognitionWebApp")
-    origin = repo.remote.origin
+    origin = repo.remotes.origin
     repo.create_head('main',origin.refs.main).set_tracking_branch(origin.refs.main).checkout()
     origin.pull
     return '',200
